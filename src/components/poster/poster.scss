@@ -2,12 +2,18 @@
   width: 10%;
   position: relative;
   &:hover {
-    filter: blur(5px) brightness(0.5);
+    transform: translateY(-10%);
+    transition: 0.5s ease;
   }
+
   .poster--image {
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    &:hover {
+      filter: blur(5px) brightness(0.5);
+      transition: 0.5s ease;
+    }
   }
   .poster--overlay {
     position: absolute;
@@ -18,9 +24,10 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    background: rgba(0, 0, 0, 0.5);
 
     .poster--overlay__title {
-      background: none;
+      cursor: pointer;
     }
     .poster--icon,
     .poster--icon path {

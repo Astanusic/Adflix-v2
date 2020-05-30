@@ -65,7 +65,7 @@ class Header extends Component {
           </a>
         </nav>
         <div className="searchBar" ref={this.searchBar}>
-          <SearchBar />
+          <SearchBar onSearchClick={this.props.onSearchClick} />
         </div>
         <div className="searchIcon--container" ref={this.searchIcon}>
           <FontAwesomeIcon

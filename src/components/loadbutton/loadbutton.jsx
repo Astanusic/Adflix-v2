@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Spinner } from "../index";
 
 import "./loadbutton.scss";
-
-library.add(faSpinner);
 
 class LoadButton extends Component {
   render() {
@@ -13,15 +9,10 @@ class LoadButton extends Component {
       <>
         {this.props.loading ? (
           <div className="spinner--wrapper">
-            <FontAwesomeIcon
-              icon="spinner"
-              pulse
-              size="5x"
-              className="fa-faSpinner"
-            />
+            <Spinner />
           </div>
         ) : (
-          <div className="loadButton">
+          <div onClick={this.props.onButtonClick} className="loadButton">
             <h5 className="loadButton--text">Voir Plus</h5>
           </div>
         )}

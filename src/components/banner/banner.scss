@@ -32,10 +32,11 @@
     }
     h2::before {
       content: "";
-      width: 100%;
+      width: 80%;
       height: 3px;
       border-radius: 2px;
       position: absolute;
+      left: 5px;
       bottom: 0;
       background: #f40017;
       box-shadow: 0 0 5px 1px rgba(244, 0, 22, 1);
