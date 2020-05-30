@@ -1,0 +1,57 @@
+.poster {
+  width: 10%;
+  position: relative;
+  &:hover {
+    filter: blur(5px) brightness(0.5);
+  }
+  .poster--image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+  .poster--overlay {
+    position: absolute;
+    z-index: 10;
+    bottom: 5px;
+    left: 0;
+    background: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .poster--overlay__title {
+      background: none;
+    }
+    .poster--icon,
+    .poster--icon path {
+      background: none;
+    }
+    .poster--icon_not,
+    .poster--icon_not path {
+      background: none;
+    }
+
+    .poster--icon path {
+      fill: rgba(255, 20, 20, 0.8);
+    }
+  }
+}
+
+@media all and (max-width: 978px) {
+  .poster--overlay {
+    .poster--overlay__title {
+      display: none;
+    }
+    .poster--icon {
+      font-size: 5px;
+    }
+  }
+}
+@media all and (max-width: 1024px) {
+  .poster--overlay {
+    .poster--overlay__title {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+  }
+}
