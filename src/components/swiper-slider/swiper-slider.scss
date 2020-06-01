@@ -1,0 +1,16 @@
+.swiper-wrapper {
+  width: 90%;
+  .slide {
+    background-image: url("../../assets/Fast_small.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 40vh;
+    width: 50px;
+  }
+  .swiper-button-next {
+    background-image: url("../../assets/next.svg");
+  }
+  .swiper-button-prev {
+    background-image: url("../../assets/back.svg");
+  }
+}

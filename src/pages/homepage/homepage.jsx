@@ -4,11 +4,21 @@ import "./homepage.scss";
 
 class HomePage extends Component {
   render() {
-    const { mTitle, mDesc, image, movies, loading } = this.props;
+    const {
+      bannerTitle,
+      bannerDesc,
+      bannerImage,
+      initialMovies,
+      loading,
+    } = this.props;
     return (
       <section>
-        <Banner title={mTitle} overview={mDesc} imgSrc={image} />
-        <PosterList movies={movies} />
+        <Banner
+          title={bannerTitle}
+          overview={bannerDesc}
+          imgSrc={bannerImage}
+        />
+        <PosterList movies={initialMovies} />
         <LoadButton
           onButtonClick={this.props.onButtonClick}
           loading={loading}

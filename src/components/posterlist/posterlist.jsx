@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Poster } from "../index";
+import { IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
 
 import "./posterlist.scss";
 
@@ -8,8 +9,8 @@ let wish;
 class PosterList extends Component {
   renderPoster = () => {
     return this.props.movies.map((movie) => {
-      const imgSrc = movie.poster_path;
-      wish = true;
+      const imgSrc = `${IMAGE_BASE_URL}/${POSTER_SIZE}/${movie.poster_path}`;
+      wish = false;
       return (
         <Poster
           key={movie.id}

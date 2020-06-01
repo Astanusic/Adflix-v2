@@ -82,10 +82,8 @@ class Header extends Component {
           />
         </div>
         <div className="header--log">
-          <a>
-            Liste des films à regarder{" "}
-            <FontAwesomeIcon className="arrowIcon" icon={faChevronDown} />
-          </a>
+          <p>Liste des films à regarder</p>{" "}
+          <FontAwesomeIcon className="arrowIcon" icon={faChevronDown} />
         </div>
       </header>
     );
