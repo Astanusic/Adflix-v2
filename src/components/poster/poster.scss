@@ -1,10 +1,10 @@
 .poster {
-  width: 11%;
+  width: 20%;
   position: relative;
-  padding-right: 12px;
-  padding-bottom: 12px;
+  // padding-right: 12px;
+  // padding-bottom: 12px;
+  padding: 20px 10px;
   &:hover {
-    transform: translateY(-5%);
     transition: 0.5s ease;
   }
 
@@ -13,6 +13,8 @@
     height: 100%;
     border-radius: 10px;
     &:hover {
+      transform: translateY(-5%);
+
       filter: blur(5px) brightness(0.5);
       transition: 0.5s ease;
     }

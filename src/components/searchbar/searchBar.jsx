@@ -16,7 +16,7 @@ class SearchBar extends Component {
         <input
           className="searchBar--input"
           type="text"
-          placeholder="Rechercher un film"
+          placeholder="Rechercher un film..."
           value={value}
           onChange={this.handleChange}
         />
