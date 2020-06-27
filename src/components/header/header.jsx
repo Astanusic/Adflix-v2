@@ -24,7 +24,6 @@ class Header extends Component {
     this.searchBar = null;
     this.navLinks = [];
     this.myTween = new TimelineLite({ paused: true });
-    this.closeSearchBar = this.closeSearchBar.bind(this);
     this.state = {
       innerWidth: window.innerWidth,
       references: [
@@ -70,22 +69,18 @@ class Header extends Component {
   }
 
   switchToCloseIcon() {
-    TweenMax.to(this.closeIcon, 0.5, { opacity: 1, display: "block" });
-    TweenMax.to(this.searchIcon, 0.5, { opacity: 0, display: "none" });
+    if (this.state.innerWidth > 960) {
+      TweenMax.to(this.closeIcon, 0.5, { opacity: 1, display: "block" });
+      TweenMax.to(this.searchIcon, 0.5, { opacity: 0, display: "none" });
+    } else {
+      TweenMax.to(this.closeIcon, 2, { opacity: 1, display: "block" });
+      TweenMax.to(this.searchIcon, 2, { opacity: 0, display: "none" });
+    }
   }
 
   switchToSearchIcon() {
     TweenMax.to(this.searchIcon, 0.5, { opacity: 1, display: "block" });
     TweenMax.to(this.closeIcon, 0.5, { opacity: 0, display: "none" });
-  }
-
-  closeSearchBar() {
-    this.state.references.forEach((elem) =>
-      elem.current.classList.remove("hide-item")
-    );
-    this.searchBar.current.classList.remove("active");
-    this.closeIcon.current.classList.remove("active");
-    this.searchIcon.current.classList.remove("active");
   }
 
   render() {
@@ -158,46 +153,6 @@ class Header extends Component {
           </nav>
         </Container>
       </header>
-
-      // <header className="header">
-      //   <Logo className="header--logo" />
-
-      //   <nav className="header--nav">
-      //     <a className="header--nav__item active" href="#" ref={this.myRef1}>
-      //       Acceuil
-      //     </a>
-      //     <a className="header--nav__item" href="#" ref={this.myRef2}>
-      //       Les mieux notés
-      //     </a>
-      //     <a className="header--nav__item" href="#" ref={this.myRef3}>
-      //       Se connecter
-      //     </a>
-      //     <a className="header--nav__item" href="#" ref={this.myRef4}>
-      //       S'enregistrer
-      //     </a>
-      //   </nav>
-      //   <div className="searchBar" ref={this.searchBar}>
-      //     <SearchBar onSearchClick={this.props.onSearchClick} />
-      //   </div>
-      //   <div className="searchIcon--container" ref={this.searchIcon}>
-      //     <FontAwesomeIcon
-      //       className="header--searchIcon"
-      //       icon={faSearch}
-      //       onClick={this.hideAll}
-      //     />
-      //   </div>
-      //   <div className="header--closeIcon__container" ref={this.closeIcon}>
-      //     <FontAwesomeIcon
-      //       className="header--closeIcon"
-      //       icon={faTimes}
-      //       onClick={this.closeSearchBar}
-      //     />
-      //   </div>
-      //   <div className="header--log">
-      //     <p>Liste des films à regarder</p>{" "}
-      //     <FontAwesomeIcon className="arrowIcon" icon={faChevronDown} />
-      //   </div>
-      // </header>
     );
   }
 }
