@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import { HomePage } from "./pages";
 import { Header, SwiperSlider } from "./components";
-import {
-  API_URL,
-  API_KEY,
-  IMAGE_BASE_URL,
-  BACKDROP_SIZE,
-  POSTER_SIZE,
-} from "./config";
+import { API_URL, API_KEY, IMAGE_BASE_URL, BACKDROP_SIZE } from "./config";
 import axios from "axios";
 
 import "./App.css";
@@ -129,7 +123,6 @@ class App extends Component {
     return axios.get(url);
   };
   handleSearch = (value) => {
-    //lancer la recherche
     try {
       this.setState(
         { loading: true, searchText: value, image: null },

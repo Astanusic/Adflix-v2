@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import Container from "../Generic/container";
+import HeaderItem from "./components/header-item/header-item";
 import { SearchBar } from "../index";
 import { ReactComponent as Logo } from "../../assets/main-logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
   faTimes,
-  faChevronDown,
-  faPlayCircle,
   faHeart,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
-import { faListAlt } from "@fortawesome/free-regular-svg-icons";
 import { TimelineLite, TweenMax } from "gsap";
 
 import "./header.scss";
@@ -22,8 +20,8 @@ class Header extends Component {
     this.searchIcon = null;
     this.closeIcon = null;
     this.heartIcon = null;
-    this.searchBar = null;
     this.menuIcon = null;
+    this.searchBar = null;
     this.navLinks = [];
     this.myTween = new TimelineLite({ paused: true });
     this.state = {
@@ -48,7 +46,6 @@ class Header extends Component {
       ],
     };
   }
-
   componentDidMount() {
     window.addEventListener("resize", () => {
       this.setState({ innerWidth: window.innerWidth });
@@ -68,6 +65,43 @@ class Header extends Component {
       transform: "translateY(50)",
       yPercent: -50,
     });
+  }
+
+  renderOnResolution() {
+    if (this.state.innerWidth <= 960) {
+      return (
+        <>
+          <div
+            className="liked-list_mobile"
+            ref={(div) => (this.heartIcon = div)}
+          >
+            <FontAwesomeIcon icon={faHeart} size="2x" />
+          </div>
+          <div className="hamburger-bar" ref={(div) => (this.menuIcon = div)}>
+            <FontAwesomeIcon icon={faBars} size="2x" />
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <div className="liked-list_desktop">
+          <FontAwesomeIcon icon={faHeart} size="2x" />
+        </div>
+      );
+    }
+  }
+
+  renderNavLinks() {
+    return this.state.references.map((el, index) => (
+      <a
+        key={el.id}
+        className="nav-items"
+        href="#"
+        ref={(a) => (this.navLinks[index] = a)}
+      >
+        {el.name}
+      </a>
+    ));
   }
 
   switchToCloseIcon() {
@@ -90,45 +124,29 @@ class Header extends Component {
   }
 
   render() {
-    const { innerWidth } = this.state;
     return (
       <header className="header">
         <Container className="wrapper">
-          <a className="logo" href="">
-            <Logo />
-          </a>
-          {innerWidth > 960 ? (
-            <div className="player-logo">
-              <FontAwesomeIcon icon={faHeart} size="2x" />
-            </div>
-          ) : null}
+          <HeaderItem>
+            <a className="logo" href="">
+              <Logo />
+            </a>
+          </HeaderItem>
 
-          {innerWidth <= 960 ? (
-            <>
-              <div
-                className="header--log"
-                ref={(div) => (this.heartIcon = div)}
-              >
-                <FontAwesomeIcon icon={faHeart} size="2x" />
+          {this.renderOnResolution()}
 
-                {/* <FontAwesomeIcon icon={faChevronDown} size="2x" /> */}
-              </div>
-              <div
-                className="hamburger-bar"
-                ref={(div) => (this.menuIcon = div)}
-              >
-                <FontAwesomeIcon icon={faBars} size="2x" />
-              </div>
-            </>
-          ) : (
-            <></>
-          )}
-          <div className="searchBar" ref={(div) => (this.searchBar = div)}>
+          <HeaderItem
+            className="searchBar"
+            ref={(div) => (this.searchBar = div)}
+          >
             <SearchBar onSearchClick={this.props.onSearchClick} />
-          </div>
-          <div className="searchBar-btn" ref={(div) => (this.searchIcon = div)}>
+          </HeaderItem>
+
+          <HeaderItem
+            className="search_icon"
+            ref={(div) => (this.searchIcon = div)}
+          >
             <FontAwesomeIcon
-              className="header--searchIcon"
               icon={faSearch}
               size="2x"
               onClick={() => {
@@ -136,13 +154,12 @@ class Header extends Component {
                 this.switchToCloseIcon();
               }}
             />
-          </div>
-          <div
-            className="header--closeIcon__container"
+          </HeaderItem>
+          <HeaderItem
+            className="close-icon_container"
             ref={(div) => (this.closeIcon = div)}
           >
             <FontAwesomeIcon
-              className="header--closeIcon"
               icon={faTimes}
               size="2x"
               onClick={() => {
@@ -150,19 +167,8 @@ class Header extends Component {
                 this.switchToSearchIcon();
               }}
             />
-          </div>
-          <nav className="header--nav">
-            {this.state.references.map((el, index) => (
-              <a
-                key={el.id}
-                className="header--nav__item"
-                href="#"
-                ref={(a) => (this.navLinks[index] = a)}
-              >
-                {el.name}
-              </a>
-            ))}
-          </nav>
+          </HeaderItem>
+          <nav className="nav_container">{this.renderNavLinks()}</nav>
         </Container>
       </header>
     );
