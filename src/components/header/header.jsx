@@ -21,7 +21,9 @@ class Header extends Component {
     super(props);
     this.searchIcon = null;
     this.closeIcon = null;
+    this.heartIcon = null;
     this.searchBar = null;
+    this.menuIcon = null;
     this.navLinks = [];
     this.myTween = new TimelineLite({ paused: true });
     this.state = {
@@ -57,8 +59,8 @@ class Header extends Component {
     this.myTween.staggerTo(
       this.navLinks,
       0.5,
-      { autoAlpha: 0, display: "none" },
-      0.25
+      { autoAlpha: 0, display: "none", y: -20 },
+      0.2
     );
     this.myTween.to(this.searchBar, 0.5, {
       autoAlpha: 1,
@@ -73,12 +75,16 @@ class Header extends Component {
       TweenMax.to(this.closeIcon, 0.5, { opacity: 1, display: "block" });
       TweenMax.to(this.searchIcon, 0.5, { opacity: 0, display: "none" });
     } else {
-      TweenMax.to(this.closeIcon, 2, { opacity: 1, display: "block" });
-      TweenMax.to(this.searchIcon, 2, { opacity: 0, display: "none" });
+      TweenMax.to(this.heartIcon, 0.5, { opacity: 0 });
+      TweenMax.to(this.menuIcon, 0.5, { opacity: 0 });
+      TweenMax.to(this.closeIcon, 1, { opacity: 1, display: "block" });
+      TweenMax.to(this.searchIcon, 0.5, { opacity: 0, display: "none" });
     }
   }
 
   switchToSearchIcon() {
+    TweenMax.to(this.heartIcon, 0.5, { opacity: 1 });
+    TweenMax.to(this.menuIcon, 0.5, { opacity: 1 });
     TweenMax.to(this.searchIcon, 0.5, { opacity: 1, display: "block" });
     TweenMax.to(this.closeIcon, 0.5, { opacity: 0, display: "none" });
   }
@@ -99,12 +105,18 @@ class Header extends Component {
 
           {innerWidth <= 960 ? (
             <>
-              <div className="header--log">
+              <div
+                className="header--log"
+                ref={(div) => (this.heartIcon = div)}
+              >
                 <FontAwesomeIcon icon={faHeart} size="2x" />
 
                 {/* <FontAwesomeIcon icon={faChevronDown} size="2x" /> */}
               </div>
-              <div className="hamburger-bar">
+              <div
+                className="hamburger-bar"
+                ref={(div) => (this.menuIcon = div)}
+              >
                 <FontAwesomeIcon icon={faBars} size="2x" />
               </div>
             </>
