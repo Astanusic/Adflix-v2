@@ -99,7 +99,7 @@
 .liked-list_mobile {
   margin-left: auto;
   position: absolute;
-  right: 60px;
+  right: 30px;
   cursor: pointer;
 }
 
@@ -130,7 +130,7 @@
     width: 100vw;
     right: 0 !important;
     z-index: 20;
-    transform: translate(10%, -50%) !important;
+    transform: translate(5%, -50%) !important;
     input {
       width: 80%;
       height: 100px;
@@ -141,12 +141,12 @@
     transform: translate(100px, -60%) !important;
   }
 
-  .search_icon,
-  .close-icon_container {
-    right: 120px !important;
+  .search_icon {
+    right: 60px !important;
   }
 
   .close-icon_container {
+    right: 120px !important;
     position: absolute;
   }
 }

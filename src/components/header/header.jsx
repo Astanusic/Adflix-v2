@@ -75,10 +75,10 @@ class Header extends Component {
             className="liked-list_mobile"
             ref={(div) => (this.heartIcon = div)}
           >
-            <FontAwesomeIcon icon={faHeart} size="2x" />
+            <FontAwesomeIcon icon={faHeart} />
           </div>
           <div className="hamburger-bar" ref={(div) => (this.menuIcon = div)}>
-            <FontAwesomeIcon icon={faBars} size="2x" />
+            <FontAwesomeIcon icon={faBars} />
           </div>
         </>
       );
@@ -141,33 +141,64 @@ class Header extends Component {
           >
             <SearchBar onSearchClick={this.props.onSearchClick} />
           </HeaderItem>
+          {this.state.innerWidth > 960 ? (
+            <HeaderItem
+              className="search_icon"
+              ref={(div) => (this.searchIcon = div)}
+            >
+              <FontAwesomeIcon
+                icon={faSearch}
+                size="2x"
+                onClick={() => {
+                  this.myTween.play();
+                  this.switchToCloseIcon();
+                }}
+              />
+            </HeaderItem>
+          ) : (
+            <HeaderItem
+              className="search_icon"
+              ref={(div) => (this.searchIcon = div)}
+            >
+              <FontAwesomeIcon
+                icon={faSearch}
+                onClick={() => {
+                  this.myTween.play();
+                  this.switchToCloseIcon();
+                }}
+              />
+            </HeaderItem>
+          )}
 
-          <HeaderItem
-            className="search_icon"
-            ref={(div) => (this.searchIcon = div)}
-          >
-            <FontAwesomeIcon
-              icon={faSearch}
-              size="2x"
-              onClick={() => {
-                this.myTween.play();
-                this.switchToCloseIcon();
-              }}
-            />
-          </HeaderItem>
-          <HeaderItem
-            className="close-icon_container"
-            ref={(div) => (this.closeIcon = div)}
-          >
-            <FontAwesomeIcon
-              icon={faTimes}
-              size="2x"
-              onClick={() => {
-                this.myTween.reverse();
-                this.switchToSearchIcon();
-              }}
-            />
-          </HeaderItem>
+          {this.state.innerWidth > 960 ? (
+            <HeaderItem
+              className="close-icon_container"
+              ref={(div) => (this.closeIcon = div)}
+            >
+              <FontAwesomeIcon
+                icon={faTimes}
+                size="2x"
+                onClick={() => {
+                  this.myTween.reverse();
+                  this.switchToSearchIcon();
+                }}
+              />
+            </HeaderItem>
+          ) : (
+            <HeaderItem
+              className="close-icon_container"
+              ref={(div) => (this.closeIcon = div)}
+            >
+              <FontAwesomeIcon
+                icon={faTimes}
+                onClick={() => {
+                  this.myTween.reverse();
+                  this.switchToSearchIcon();
+                }}
+              />
+            </HeaderItem>
+          )}
+
           <nav className="nav_container">{this.renderNavLinks()}</nav>
         </Container>
       </header>
