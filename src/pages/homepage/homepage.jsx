@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Banner, PosterList, LoadButton } from "../../components";
 import SwiperSlider from "../../components/swiper-slider/swiper-slider";
+import SwiperNav from "../../components/swiper-nav/swiper-nav";
 import "./homepage.scss";
 
 class HomePage extends Component {
@@ -14,12 +15,13 @@ class HomePage extends Component {
     } = this.props;
     return (
       <section>
+        <SwiperNav />
+        <SwiperSlider movies={initialMovies} />
         <Banner
           title={bannerTitle}
           overview={bannerDesc}
           imgSrc={bannerImage}
         />
-        <SwiperSlider movies={initialMovies} />
         <PosterList movies={initialMovies} />
         <LoadButton
           onButtonClick={this.props.onButtonClick}
