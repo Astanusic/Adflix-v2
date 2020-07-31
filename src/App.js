@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { HomePage } from "./pages";
-import { Header, SwiperSlider } from "./components";
+import { Header } from "./components";
 import { API_URL, API_KEY, IMAGE_BASE_URL, BACKDROP_SIZE } from "./config";
 import axios from "axios";
 
@@ -151,7 +151,6 @@ class App extends Component {
       <div className="App">
         <Header onSearchClick={this.handleSearch} />
         <HomePage {...this.state} onButtonClick={this.loadMore} />
-        <SwiperSlider />
       </div>
     );
   }

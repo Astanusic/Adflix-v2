@@ -3,6 +3,7 @@ import { Poster } from "../index";
 import { IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
 
 import "./posterlist.scss";
+import Container from "../Generic/container";
 
 let wish;
 
@@ -25,9 +26,11 @@ class PosterList extends Component {
   };
   render() {
     return (
-      <section className="posterlist">
-        <h2 className="posterlist--title">Derniers Ajouts</h2>
-        <div className="posterlist--grid">{this.renderPoster()}</div>
+      <section>
+        <Container className="posterlist">
+          <h2 className="posterlist--title">Derniers Films Ajoutés</h2>
+          <div className="posterlist--grid">{this.renderPoster()}</div>
+        </Container>
       </section>
     );
   }
