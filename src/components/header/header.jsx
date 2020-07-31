@@ -62,8 +62,9 @@ class Header extends Component {
     this.myTween.to(this.searchBar, 0.5, {
       autoAlpha: 1,
       display: "flex",
-      transform: "translateY(50)",
-      yPercent: -50,
+      borderLeft: "1px solid white",
+      // transform: "translateY(50)",
+      // yPercent: -50,
     });
   }
 
@@ -136,10 +137,15 @@ class Header extends Component {
           {this.renderOnResolution()}
 
           <HeaderItem
-            className="searchBar"
+            className="seachBar-container"
             ref={(div) => (this.searchBar = div)}
           >
-            <SearchBar onSearchClick={this.props.onSearchClick} />
+            {/* <div ref={(div) => (this.searchBar = div)}> */}
+            <SearchBar
+              className="searchBar"
+              onSearchClick={this.props.onSearchClick}
+            />
+            {/* </div> */}
           </HeaderItem>
           {this.state.innerWidth > 960 ? (
             <HeaderItem

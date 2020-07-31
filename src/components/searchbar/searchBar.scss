@@ -1,8 +1,13 @@
+.searchBar--container {
+  width: 100%;
+}
+
 .searchBar--input {
   color: #fff !important;
   border: none;
   outline: none;
   font-size: 28px;
+  width: 100%;
   &::placeholder {
     color: #fff;
   }
