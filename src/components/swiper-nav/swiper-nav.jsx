@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "../Generic/container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFire, faFilm } from "@fortawesome/free-solid-svg-icons";
+import { faFire, faFilm, faChild } from "@fortawesome/free-solid-svg-icons";
 import { faGrinHearts } from "@fortawesome/free-regular-svg-icons";
 
 import "./swiper-nav.scss";
@@ -21,6 +21,10 @@ const SwiperNav = () => {
         <div className="swiper-nav_btn">
           <FontAwesomeIcon icon={faGrinHearts} size="2x" />
           <p>Les plus likés</p>
+        </div>
+        <div className="swiper-nav_btn">
+          <FontAwesomeIcon icon={faChild} size="2x" />
+          <p>Films pour enfants</p>
         </div>
       </Container>
     </div>
