@@ -41,6 +41,6 @@
     ]
   },
   "devDependencies": {
-    "gsap": "^3.3.4"
+    "gsap": "^3.6.0"
   }
 }
